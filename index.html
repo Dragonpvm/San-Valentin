@@ -5,134 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ti 💖</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body {
-            background-color: #ffcccc;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        h1 {
-            color: #d63384;
-            font-size: 2.5rem;
-        }
-        .message {
-            font-size: 1.5rem;
-            color: #333;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #d63384;
-            display: inline-block;
-            animation: typing 4s steps(40, end) forwards;
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        /* Galería de imágenes con volteo */
-        .gallery {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .card {
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            perspective: 1000px;
-        }
-        .flip-card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-        }
-        .flipped {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            backface-visibility: hidden;
-            border-radius: 10px;
-        }
-        .flip-card-front img {
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-        }
-        .flip-card-back {
-            background-color: #d63384;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transform: rotateY(180deg);
-        }
-
-        /* Botones */
-        .hidden-content {
-            display: none;
-            margin-top: 20px;
-        }
-        .question {
-            font-size: 1.8rem;
-            color: #d63384;
-            margin-top: 20px;
-        }
-        .buttons {
-            margin-top: 10px;
-        }
-        .btn {
-            font-size: 1.5rem;
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        .yes {
-            background-color: #28a745;
-            color: white;
-        }
-        .no {
-            background-color: #dc3545;
-            color: white;
-            position: absolute;
-        }
-
-        /* Animación corazones flotantes */
-        .heart {
-            position: absolute;
-            color: red;
-            font-size: 20px;
-            animation: float 5s infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0) }
-            50% { transform: translateY(-100px); opacity: 0.5 }
-            100% { transform: translateY(-200px); opacity: 0 }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <audio id="miMusica" loop>
         <source src="song/BABI-TU_NANA.mp3" type="audio/mpeg">
     </audio>
     
-    <button onclick="document.getElementById('miMusica').play()">🎶 Reproducir Música</button>
-
     <div class="container">
         <h1>💖 Para Mi Muñeca De Porcelana!!! 💖<br> ❤️ Feliz Día Del Amor Y La Amistad Princesa!!! ❤️</h1>
         <p class="message">Eres lo mejor que me ha pasado...</p>
+        <br>
+        <!-- Botón de reproducir música con estilo -->
+        <button class="music-btn" onclick="document.getElementById('miMusica').play()">🎶 Reproducir Música</button>
 
         <div class="gallery">
             <!-- Tarjetas con imágenes y mensajes ocultos -->
@@ -203,8 +88,8 @@
                 </div>
             </div>
         </div>
-<br>
-        <button onclick="showQuestion()">Presiona aquí 💝</button>
+        <br>
+        <button class="press-btn" onclick="showQuestion()">Presiona aquí 💝</button>
 
         <div class="hidden-content" id="hiddenContent">
             <p class="question">¿Quieres ser mi San Valentín? 💖</p>
@@ -232,10 +117,15 @@
 
         function moveNoButton() {
             let noButton = document.getElementById("noButton");
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 100);
+            let buttonWidth = noButton.offsetWidth;
+            let buttonHeight = noButton.offsetHeight;
+
+            let x = Math.random() * (window.innerWidth - buttonWidth); 
+            let y = Math.random() * (window.innerHeight - buttonHeight);
+
             noButton.style.left = x + "px";
             noButton.style.top = y + "px";
+
         }
 
         function createHeart() {
@@ -248,7 +138,6 @@
             setTimeout(() => heart.remove(), 5000);
         }
         setInterval(createHeart, 500);
-        
     </script>
 </body>
 </html>
