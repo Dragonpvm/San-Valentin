@@ -86,8 +86,8 @@ h1 {
 }
 
 .card {
-    width: 150px;
-    height: 150px;
+    width: 250px; /* Aumenté el tamaño de la tarjeta */
+    height: 250px; /* Aumenté el tamaño de la tarjeta */
     margin: 15px;
     display: inline-block;
     cursor: pointer;
